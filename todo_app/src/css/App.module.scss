@@ -55,21 +55,23 @@
   display: flex;
   justify-content: start;
   align-items: center;
-}
 
-.row:not(.row:first-of-type) {
-  margin-top: 2.5rem;
-}
+  &:not(.row:first-of-type) {
+    margin-top: 2.5rem;
+  }
 
-.row:not(.row:last-of-type) {
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #9EC7C4;
+  &:not(.row:last-of-type) {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #9EC7C4;
+  }
 }
 
 .category {
   background-color: #9EC7C4;
   color: #ffffff;
-  padding: 1rem;
+  padding: 1rem 0;
+  width: 7rem;
+  text-align: center;
   border-radius: 25%;
   font-size: 1.6rem;
 }

@@ -1,34 +1,11 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import classes from "../css/App.module.scss";
-import type { TodoType } from "../types/TodoType";
+import { useFetchTodoList } from "../hooks/useFetchTodoList";
 
 export const App: FC = () => {
 
     // TODOリスト
-    const [todoList, setTodoList] = useState<TodoType[]>([]);
-
-    // TODOリスト取得
-    useEffect(() => {
-        const data: TodoType[] = [
-            {
-                category: 1,
-                text: "買い物"
-            },
-            {
-                category: 2,
-                text: "打ち合わせ"
-            },
-            {
-                category: 3,
-                text: "ドライブ"
-            },
-            {
-                category: 1,
-                text: "筋トレ"
-            }
-        ];
-        setTodoList(data);
-    }, []);
+    const { todoList } = useFetchTodoList();
 
     return (
         <div className={classes.wrap}>
@@ -58,7 +35,7 @@ export const App: FC = () => {
             <div className={classes.todo_list}>
                 {todoList.map((todo, index) => (
                     <div className={classes.row}>
-                        <div className={classes.category}>{todo.category}</div>
+                        <div className={classes.category}>{todo.category_name}</div>
                         <div className={classes.text}>{todo.text}</div>
                     </div>
                 ))}
