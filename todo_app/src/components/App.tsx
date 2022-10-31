@@ -1,6 +1,7 @@
 import { FC } from "react";
 import classes from "../css/App.module.scss";
 import { useFetchTodoList } from "../hooks/useFetchTodoList";
+import { TodoList } from "./TodoList";
 
 export const App: FC = () => {
 
@@ -32,15 +33,7 @@ export const App: FC = () => {
             </div>
 
             {/* TODOリスト */}
-            <div className={classes.todo_list}>
-                {todoList.map((todo, index) => (
-                    <div className={classes.row} key={index}>
-                        <div className={classes.category}>{todo.category_name}</div>
-                        <div className={classes.text}>{todo.text}</div>
-                    </div>
-                ))}
-            </div >
-
+            <TodoList todoList={todoList} />
         </div >
     )
 };
