@@ -35,7 +35,7 @@ export const useFetchTodoList = () => {
 
         setTodoList(data);
 
-    });
+    }, []);
 
     return { todoList };
 };

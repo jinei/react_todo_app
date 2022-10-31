@@ -34,7 +34,7 @@ export const App: FC = () => {
             {/* TODOリスト */}
             <div className={classes.todo_list}>
                 {todoList.map((todo, index) => (
-                    <div className={classes.row}>
+                    <div className={classes.row} key={index}>
                         <div className={classes.category}>{todo.category_name}</div>
                         <div className={classes.text}>{todo.text}</div>
                     </div>
