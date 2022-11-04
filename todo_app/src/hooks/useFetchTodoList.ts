@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import type { TodoType } from "../types/TodoType";
+import { useFetchCategory } from "./useFetchCategory";
 
 export const useFetchTodoList = () => {
     // TODOリスト
     const [todoList, setTodoList] = useState<TodoType[]>([]);
+    const { fetchCategoryName } = useFetchCategory();
 
     useEffect(() => {
-
         // TODOリスト取得
         const data: TodoType[] = [
             {
@@ -29,7 +30,7 @@ export const useFetchTodoList = () => {
 
         data.forEach(todo => {
             const categoryId: number = todo.category_id;
-            const categoryName = fetchCategoryName(categoryId);
+            const categoryName: string = fetchCategoryName(categoryId);
             todo.category_name = categoryName;
         });
 
@@ -38,23 +39,4 @@ export const useFetchTodoList = () => {
     }, []);
 
     return { todoList };
-};
-
-/**
- * カテゴリー名の取得
- * 
- * @param categoryId 
- * @returns カテゴリー名
- */
-const fetchCategoryName = (categoryId: number) => {
-    switch (categoryId) {
-        case 1:
-            return "趣味";
-        case 2:
-            return "仕事";
-        case 3:
-            return "その他";
-        default:
-            return "";
-    };
 };

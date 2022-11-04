@@ -4,7 +4,6 @@ import { useFetchTodoList } from "../hooks/useFetchTodoList";
 import { TodoList } from "./TodoList";
 
 export const App: FC = () => {
-
     // TODOリスト
     const { todoList } = useFetchTodoList();
 
