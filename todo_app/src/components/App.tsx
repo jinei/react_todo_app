@@ -1,11 +1,13 @@
 import { FC } from "react";
 import classes from "../css/App.module.scss";
-import { useFetchTodoList } from "../hooks/useFetchTodoList";
+import { useTodoList } from "../hooks/useTodoList";
 import { TodoList } from "./TodoList";
+import type { TodoType } from "../types/TodoType";
 
 export const App: FC = () => {
     // TODOリスト
-    const { todoList } = useFetchTodoList();
+    const { fetchTodoList } = useTodoList();
+    const todoList: TodoType[] = fetchTodoList();
 
     return (
         <div className={classes.wrap}>

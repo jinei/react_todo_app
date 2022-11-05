@@ -1,10 +1,7 @@
-import { useState, useCallback } from "react";
+import { useCallback } from "react";
 
 /**
- * カテゴリー名の取得関数
- * 
- * @param categoryId 
- * @returns string カテゴリー名
+ * カテゴリーの制御に関するカスタムフック
  */
 export const useFetchCategory = () => {
 
