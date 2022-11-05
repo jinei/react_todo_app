@@ -61,5 +61,16 @@ export const useTodoList = () => {
         setTodoList(tmp);
     }, [todoList]);
 
-    return { todoList, addTodoList };
+    /**
+     * TODOリストの削除
+     * 
+     * @param todo
+     */
+    const deleteTodoList = useCallback((index: number) => {
+        const tmp = [...todoList];
+        tmp.splice(index, 1);
+        setTodoList(tmp);
+    }, [todoList]);
+
+    return { todoList, addTodoList, deleteTodoList };
 };

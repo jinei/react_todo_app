@@ -6,7 +6,7 @@ import type { TodoType } from "../types/TodoType";
 
 export const App: FC = () => {
     // TODOリスト
-    const { todoList, addTodoList } = useTodoList();
+    const { todoList, addTodoList, deleteTodoList } = useTodoList();
 
     // テキストボックス制御
     const [inputTodo, setInputTodo] = useState<string>("");
@@ -21,14 +21,19 @@ export const App: FC = () => {
         setInputCategoryId(selectValue);
     }
 
-    // ボタン押下
-    const onClickAdd = () => {
+    // Addボタン押下
+    const onClickAdd = (): void => {
         const todo: TodoType = {
             category_id: inputCategoryId,
             text: inputTodo
         }
         addTodoList(todo);
         setInputTodo("");
+    }
+
+    // DELETEボタン押下
+    const onClickDelete = (index: number): void => {
+        deleteTodoList(index);
     }
 
     return (
@@ -56,7 +61,7 @@ export const App: FC = () => {
             </div>
 
             {/* TODOリスト */}
-            <TodoList todoList={todoList} />
+            <TodoList todoList={todoList} onClickDelete={onClickDelete} />
         </div >
     )
 };
