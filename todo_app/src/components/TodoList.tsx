@@ -17,6 +17,7 @@ export const TodoList: FC<Props> = memo(props => {
                         <div className={classes.row} key={index}>
                             <div className={classes.category}>{todo.category_name}</div>
                             <div className={classes.text}>{todo.text}</div>
+                            <button className={classes.delete_button}>削除</button>
                         </div>
                     ))
                 }

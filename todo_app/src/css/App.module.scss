@@ -1,7 +1,7 @@
-$main-color: #23C3CD;
-$sub-color: #9EC7C4;
+$main-color: #EC9F05;
 $white-color: #ffffff;
-$border-color: #C4C4C4;
+$border-color: #EC9F05;
+$delete-color: #c6390a;
 
 .wrap {
   margin: 7rem auto;
@@ -51,14 +51,14 @@ $border-color: #C4C4C4;
 .todo_list {
   margin-top: 5rem;
   width: 100%;
-  border: 3px solid $white-color;
+  border: 3px solid $main-color;
   border-radius: 5px;
   padding: 5rem;
 }
 
 .row {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
 
   &:not(.row:first-of-type) {
@@ -67,12 +67,12 @@ $border-color: #C4C4C4;
 
   &:not(.row:last-of-type) {
     padding-bottom: 1rem;
-    border-bottom: 1px solid $sub-color;
+    border-bottom: 2px dashed $main-color;
   }
 }
 
 .category {
-  background-color: $sub-color;
+  background-color: $main-color;
   color: $white-color;
   padding: 1rem 0;
   width: 7rem;
@@ -84,4 +84,16 @@ $border-color: #C4C4C4;
 .text {
   margin-left: 2.5rem;
   font-size: 2rem;
+}
+
+.delete_button {
+  margin-left: auto;
+  margin-right: 2rem;
+  border: none;
+  background-color: $delete-color;
+  color: $white-color;
+  font-size: 1.4rem;
+  border-radius: 5px;
+  padding: 1rem;
+  cursor: pointer;
 }

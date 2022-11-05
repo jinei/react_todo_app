@@ -15,7 +15,7 @@ export const App: FC = () => {
     }
 
     // セレクトボックス制御
-    const [inputCategoryId, setInputCategoryId] = useState<number>(0);
+    const [inputCategoryId, setInputCategoryId] = useState<number>(1);
     const onChangeSelect = (e: ChangeEvent<HTMLSelectElement>) => {
         const selectValue: number = parseInt(e.target.value, 10);
         setInputCategoryId(selectValue);
