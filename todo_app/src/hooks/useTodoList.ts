@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import type { TodoType } from "../types/TodoType";
 import { useFetchCategory } from "./useFetchCategory";
 
@@ -7,15 +7,14 @@ import { useFetchCategory } from "./useFetchCategory";
  */
 export const useTodoList = () => {
 
+    // Todoリスト
+    const [todoList, setTodoList] = useState<TodoType[]>([]);
+
     // カテゴリー名取得関数
     const { fetchCategoryName } = useFetchCategory();
 
-    /**
-     * TODOリスト取得関数
-     * 
-     * @returns TodoType[] TODOリスト
-     */
-    const fetchTodoList = useCallback(() => {
+    useEffect(() => {
+
         // TODOリスト取得
         const data: TodoType[] = [
             {
@@ -42,8 +41,25 @@ export const useTodoList = () => {
             todo.category_name = categoryName;
         });
 
-        return data;
-    }, []);
+        setTodoList(data);
+    }, [])
 
-    return { fetchTodoList };
+    /**
+     * TODOリストの追加
+     * 
+     * @param todo
+     */
+    const addTodoList = useCallback((todo: TodoType) => {
+        // 入力値のカテゴリー名の取得
+        const categoryId = todo.category_id;
+        const categoryName = fetchCategoryName(categoryId);
+        todo.category_name = categoryName;
+
+        // 配列に追加
+        const tmp = [...todoList];
+        tmp.push(todo);
+        setTodoList(tmp);
+    }, [todoList]);
+
+    return { todoList, addTodoList };
 };
